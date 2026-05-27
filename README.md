@@ -21,10 +21,10 @@
   <img src="https://img.shields.io/badge/Build-Passing-22c55e?style=for-the-badge&logo=githubactions&logoColor=white" alt="Build"/>
 </p>
 
-<br/>
+<br/>a
 
 <p align="center">
-  A <strong>production-ready</strong>, <strong>enterprise-grade</strong> authentication & authorization boilerplate<br/>
+  A <strong>production-ready</strong>, <strong>SaaS</strong> Auth System<br/>
   built with <strong>Node.js</strong> · <strong>Express</strong> · <strong>MongoDB</strong> · <strong>JWT</strong> · <strong>Passport.js</strong><br/>
   <em>Plug-and-play auth for your next SaaS product — register, ship, scale.</em>
 </p>
@@ -51,13 +51,10 @@
 - [⚡ Quick Start](#-quick-start)
 - [🔧 Environment Variables](#-environment-variables)
 - [📁 Project Structure](#-project-structure)
-- [📡 API Reference](#-api-reference)
 - [🐳 Docker Setup](#-docker-setup)
-- [🚀 Deployment](#-deployment)
 - [🔐 Security Features](#-security-features)
 - [🧪 Testing](#-testing)
 - [🏗️ Architecture](#️-architecture)
-- [🤝 Contributing](#-contributing)
 - [📄 License](#-license)
 
 ---
@@ -215,74 +212,6 @@ saas-auth-system/
 
 ---
 
-## 📡 API Reference
-
-**Base URL:** `http://localhost:3000/v1`
-**Swagger UI:** `http://localhost:3000/v1/docs`
-
-### 🔑 Auth Endpoints
-
-| Method | Endpoint | Description | Auth Required |
-|:---:|:---|:---|:---:|
-| `POST` | `/auth/register` | Register a new user | ❌ |
-| `POST` | `/auth/login` | Login and get tokens | ❌ |
-| `POST` | `/auth/logout` | Invalidate refresh token | ✅ |
-| `POST` | `/auth/refresh-tokens` | Get new access token | ❌ |
-| `POST` | `/auth/forgot-password` | Send password reset email | ❌ |
-| `POST` | `/auth/reset-password` | Reset password with token | ❌ |
-| `POST` | `/auth/send-verification-email` | Send email verification | ✅ |
-| `POST` | `/auth/verify-email` | Verify email address | ❌ |
-| `GET`  | `/auth/google` | Initiate Google OAuth | ❌ |
-| `GET`  | `/auth/google/callback` | Google OAuth callback | ❌ |
-
-### 👤 User Endpoints
-
-| Method | Endpoint | Description | Auth Required |
-|:---:|:---|:---|:---:|
-| `GET` | `/users` | List all users | ✅ Admin |
-| `POST` | `/users` | Create a user | ✅ Admin |
-| `GET` | `/users/:userId` | Get user by ID | ✅ |
-| `PATCH` | `/users/:userId` | Update user | ✅ |
-| `DELETE` | `/users/:userId` | Delete user | ✅ Admin |
-
-### 📦 Sample Request & Response
-
-**`POST /v1/auth/register`**
-
-```json
-// Request Body
-{
-  "name": "Jane Doe",
-  "email": "jane@yoursaas.com",
-  "password": "SecurePass123!"
-}
-```
-
-```json
-// 201 Created
-{
-  "user": {
-    "id": "64f2a3b1e4b0c1d2e3f4a5b6",
-    "name": "Jane Doe",
-    "email": "jane@yoursaas.com",
-    "role": "user",
-    "isEmailVerified": false
-  },
-  "tokens": {
-    "access": {
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-      "expires": "2024-10-15T12:00:00.000Z"
-    },
-    "refresh": {
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-      "expires": "2024-11-14T12:00:00.000Z"
-    }
-  }
-}
-```
-
----
-
 ## 🐳 Docker Setup
 
 ### Development (with hot reload)
@@ -344,62 +273,6 @@ docker-compose up --build --force-recreate
 
 ---
 
-## 🚀 Deployment
-
-### PM2 (Process Manager)
-
-```bash
-# Install PM2 globally
-npm install -g pm2
-
-# Start with ecosystem config
-pm2 start ecosystem.config.js --env production
-
-# Monitor processes
-pm2 monit
-
-# View logs
-pm2 logs
-
-# Auto-restart on reboot
-pm2 startup
-pm2 save
-```
-
-### Sample `ecosystem.config.js`
-
-```js
-module.exports = {
-  apps: [
-    {
-      name: 'saas-auth-system',
-      script: 'src/index.js',
-      instances: 'max',
-      exec_mode: 'cluster',
-      env: {
-        NODE_ENV: 'development',
-      },
-      env_production: {
-        NODE_ENV: 'production',
-        PORT: 3000,
-      },
-    },
-  ],
-};
-```
-
-### Deploy to Cloud
-
-| Platform | Command |
-|:---|:---|
-| **Railway** | `railway up` |
-| **Render** | Connect repo → Auto-deploy |
-| **Heroku** | `git push heroku main` |
-| **DigitalOcean App Platform** | Push to `main` branch |
-| **AWS EC2** | Clone → PM2 → Nginx reverse proxy |
-
----
-
 ## 🔐 Security Features
 
 > [!IMPORTANT]
@@ -434,17 +307,6 @@ npm run test:coverage
 # Run in watch mode (development)
 npm run test:watch
 ```
-
-### Coverage Targets
-
-| Metric | Target |
-|:---|:---:|
-| Statements | ≥ 80% |
-| Branches | ≥ 75% |
-| Functions | ≥ 80% |
-| Lines | ≥ 80% |
-
----
 
 ## 🏗️ Architecture
 
@@ -498,41 +360,6 @@ All endpoints are documented with:
 
 ---
 
-## 🤝 Contributing
-
-Contributions are welcome and appreciated! Here's how to get involved:
-
-```bash
-# 1. Fork the repository
-# 2. Create your feature branch
-git checkout -b feature/amazing-feature
-
-# 3. Commit your changes (follow Conventional Commits)
-git commit -m "feat: add amazing feature"
-
-# 4. Push to your branch
-git push origin feature/amazing-feature
-
-# 5. Open a Pull Request
-```
-
-### Contribution Guidelines
-
-- Follow the existing code style (ESLint + Prettier)
-- Write tests for new features
-- Update documentation as needed
-- Use [Conventional Commits](https://www.conventionalcommits.org/) for commit messages
-
-<div align="center">
-
-<img src="https://img.shields.io/badge/contributions-welcome-f59e0b?style=for-the-badge&logo=git&logoColor=white" alt="Contributions Welcome"/>
-<img src="https://img.shields.io/badge/code_style-prettier-ff69b4?style=for-the-badge&logo=prettier&logoColor=white" alt="Prettier"/>
-<img src="https://img.shields.io/badge/commit_style-conventional-6366F1?style=for-the-badge&logo=git&logoColor=white" alt="Conventional Commits"/>
-
-</div>
-
----
-
 ## 📄 License
 
 This project is licensed under the **MIT License** — free for personal and commercial use.
@@ -540,7 +367,7 @@ This project is licensed under the **MIT License** — free for personal and com
 ```
 MIT License
 
-Copyright (c) 2024 Your Name
+Copyright (c) 2025 starrysanjay
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
