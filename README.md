@@ -34,10 +34,8 @@
 <p align="center">
   <a href="#-quick-start">Quick Start</a> ·
   <a href="#-features">Features</a> ·
-  <a href="#-api-reference">API Reference</a> ·
   <a href="#-docker-setup">Docker</a> ·
   <a href="#-swagger-docs">Docs</a> ·
-  <a href="#-contributing">Contributing</a>
 </p>
 
 </div>
@@ -55,7 +53,6 @@
 - [🔐 Security Features](#-security-features)
 - [🧪 Testing](#-testing)
 - [🏗️ Architecture](#️-architecture)
-- [📄 License](#-license)
 
 ---
 
@@ -128,7 +125,7 @@ cd saas-auth-system
 ### 2 · Install dependencies
 
 ```bash
-npm install
+yarn install
 ```
 
 ### 3 · Configure environment
@@ -141,7 +138,7 @@ cp .env.example .env
 ### 4 · Start development server
 
 ```bash
-npm run dev
+yarn dev
 ```
 
 > 🎉 Server is running at `http://localhost:3000`
@@ -255,22 +252,6 @@ volumes:
   mongo_data:
 ```
 
-### Useful Docker Commands
-
-```bash
-# View running containers
-docker ps
-
-# View app logs
-docker-compose logs -f app
-
-# Stop all containers
-docker-compose down
-
-# Rebuild from scratch
-docker-compose up --build --force-recreate
-```
-
 ---
 
 ## 🔐 Security Features
@@ -341,7 +322,7 @@ npm run test:watch
 
 ## 📖 Swagger Docs
 
-Interactive API documentation is auto-generated and available at:
+Interactive API documentation is generated and available at:
 
 ```
 http://localhost:3000/v1/docs
@@ -360,40 +341,22 @@ All endpoints are documented with:
 
 ---
 
-## 📄 License
-
-This project is licensed under the **MIT License** — free for personal and commercial use.
-
-```
-MIT License
-
-Copyright (c) 2025 starrysanjay
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction...
-```
-
-See the full [LICENSE](./LICENSE) file for details.
-
----
-
 <div align="center">
 
 ### 🌟 If this project helped you, give it a star!
 
-<img src="https://img.shields.io/github/stars/your-username/saas-auth-system?style=for-the-badge&logo=github&color=6366F1" alt="Stars"/>
-<img src="https://img.shields.io/github/forks/your-username/saas-auth-system?style=for-the-badge&logo=github&color=22c55e" alt="Forks"/>
-<img src="https://img.shields.io/github/issues/your-username/saas-auth-system?style=for-the-badge&logo=github&color=f59e0b" alt="Issues"/>
+<img src="https://img.shields.io/github/stars/starrysanjay/saas-auth-system?style=for-the-badge&logo=github&color=6366F1" alt="Stars"/>
+<img src="https://img.shields.io/github/forks/starrysanjay/saas-auth-system?style=for-the-badge&logo=github&color=22c55e" alt="Forks"/>
+<img src="https://img.shields.io/github/issues/starrysanjay/saas-auth-system?style=for-the-badge&logo=github&color=f59e0b" alt="Issues"/>
 
 <br/><br/>
 
 **Built with ❤️ using Node.js · Express · MongoDB · JWT**
 
 <sub>
-  <a href="https://github.com/your-username/saas-auth-system/issues">Report a Bug</a> ·
-  <a href="https://github.com/your-username/saas-auth-system/issues">Request a Feature</a> ·
-  <a href="https://github.com/your-username/saas-auth-system/discussions">Discussions</a>
+  <a href="https://github.com/starrysanjay/saas-auth-system/issues">Report a Bug</a> ·
+  <a href="https://github.com/starrysanjay/saas-auth-system/issues">Request a Feature</a> ·
+  <a href="https://github.com/starrysanjay/saas-auth-system/discussions">Discussions</a>
 </sub>
 
 <br/><br/>
